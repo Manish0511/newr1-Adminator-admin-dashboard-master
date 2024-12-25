@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
-import Index from './Companents/Layout/Auth/Index';
-import Main from './Companents/Layout/UnAuth/Main';
+import AuthLayout from './Companents/Layout/Auth/Index';
+import UnAuthLayout from './Companents/Layout/UnAuth/Main';
 import Login from './pages/unauth/Login';
 import Register from './pages/unauth/Register';
 import Authenticated from './Middlewares/Authenticated';
@@ -15,16 +15,15 @@ import CreateCompany from './pages/auth/Companies/Create';
 
 const App = () => {
   return (
-    <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Main />} >
+          <Route path='/' element={<UnAuthLayout />} >
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
           </Route>
           <Route path='/' element={<Authenticated />} >
             <Route path='/' element={<UserPermission />} >
-              <Route path='/' element={<Index />} >
+              <Route path='/' element={<AuthLayout />} >
                 <Route index element={<Dashboard />} />
                 <Route path='/users' element={ hasPermission(['user.*', 'user.index']) ? <Users /> : <Dashboard /> } />
                 <Route path='/users/create' element={ hasPermission(['user.*', 'user.create']) ? <UserCreate /> : <Dashboard /> } />
@@ -37,7 +36,6 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
   )
 }
 

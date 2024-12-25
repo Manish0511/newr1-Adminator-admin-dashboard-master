@@ -1,13 +1,9 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import apiService from "../../apis/apiService";
 import { authAction } from "../../store/auth/auth";
 import { encrypt } from "../../Helpers/encryption";
-
-const isAuthenticated = () => {
-    return !!localStorage.getItem("authToken");
-};
 
 const Login = () => {
     const dispatch = useDispatch(),
@@ -15,10 +11,7 @@ const Login = () => {
         emailRef = useRef(''),
         passwordRef = useRef(''),
         rememberMeRef = useRef('')
-    if(isAuthenticated())
-    {
-        return <Navigate to="/login" replace />;   
-    }
+
     const handleLogin = async (e) => {
         e.preventDefault()
         const userData = {

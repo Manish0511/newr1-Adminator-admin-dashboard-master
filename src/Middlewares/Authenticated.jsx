@@ -3,16 +3,14 @@ import { Navigate, Outlet } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import apiService from '../apis/apiService'
 import { authAction } from "../store/auth/auth";
+import { isAuthenticated } from "../Helpers/hasPermission";
 
-const isAuthenticated = () => {
-    return !!localStorage.getItem("authToken");
-};
 const Authenticated = memo(() => {
     // console.log('Middleware Authenticated started')
     const user = useSelector((store) => store.authUser),
         dispatch = useDispatch()
 
-    if(!isAuthenticated())
+    if( !isAuthenticated() )
     {
         return <Navigate to="/login" replace />;
     }

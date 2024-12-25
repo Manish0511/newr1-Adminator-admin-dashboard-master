@@ -53,7 +53,7 @@ const Sidebar = () => {
                             ].filter(Boolean).join(" ")
                         } to='/users'>
                             <span className="icon-holder">
-                            <i className="c-brown-500 ti-email"></i>
+                            <i className="c-brown-500 ti-user"></i>
                             </span>
                             <span className="title">Users</span>
                         </NavLink>
