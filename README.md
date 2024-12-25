@@ -1,3 +1,6 @@
+# React saas admin panel(Continue)
+This is react js with reduxjs/toolkit, zod, react-hook-form, react-router-dom and react-bootstrap, saas admin panel for demo purpose only.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
